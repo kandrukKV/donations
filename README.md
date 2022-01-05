@@ -1,15 +1,10 @@
-# Basic Sample Hardhat Project
+Smart contract to receive donations.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+The address of the contract on the network Rinkeby: "0x144046D2c490C0783fd6420bE7555Dad34be7e73"
 
-Try running some of the following tasks:
+https://rinkeby.etherscan.io/address/0x144046D2c490C0783fd6420bE7555Dad34be7e73
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Simple .env:
+ALCHEMY_KEY=5mJECPzFuHUTfBRelfQ-ytr4yXoFnBEA
+PRIVATE_ACC_KEY=df04462a78f21a2a0fadc47d761f3536596063787620e95b692bd0aa2126806c
+CONTRACT_ADDRESS=0x144046D2c490C0783fd6420bE7555Dad34be7e73

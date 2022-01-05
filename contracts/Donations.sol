@@ -2,8 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract Donations {
-    address public owner;
-    address public donationsAddress;
+    address owner;
     uint currentTransfer;
 
     struct Transfer {
@@ -12,15 +11,14 @@ contract Donations {
         address sender;
     }
 
-    Transfer[] public transfers;
+    Transfer[] transfers;
 
     constructor() {
         owner = msg.sender;
-        donationsAddress = address(this);
     }
 
     function getBalance() public view returns(uint) {
-        return donationsAddress.balance;
+        return address(this).balance;
     }
 
     modifier requireOwner() {
@@ -29,8 +27,21 @@ contract Donations {
     }
 
     function withdrawAll(address payable _to) public requireOwner{
-        require(donationsAddress.balance > 0, "Zero balance");
-        _to.transfer(donationsAddress.balance);
+        require(address(this).balance > 0, "Zero balance");
+        _to.transfer(address(this).balance);
+    }
+
+    function getTransfer(uint _idx) public view returns(Transfer memory) {
+        require(_idx < transfers.length, "Can't find this transfer");
+        return  transfers[_idx];
+    }
+
+    function getTransfers() public view returns(Transfer[] memory) {
+        return transfers;
+    }
+
+    function getTransfersCount() public view returns(uint) {
+        return transfers.length;
     }
 
     receive() external payable {
